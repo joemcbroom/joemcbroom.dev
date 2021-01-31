@@ -1,0 +1,216 @@
+<template>
+	<div class="resume">
+		<div class="header">
+			<div class="contact-section text-right">
+				<div class="location">{{ me.location }}</div>
+				<div class="phone">{{ me.phone }}</div>
+			</div>
+			<div class="image-section">
+				<img class="profile-img" src="@/assets/img/profile.jpg" />
+			</div>
+			<div class="links-section text-left">
+				<div class="email">
+					<a :href="`mailto:${me.email}`">{{ me.email }}</a>
+				</div>
+				<div class="links">
+					<div v-for="link of me.links" :key="link" class="link">
+						<a :href="`http://${link}`">{{ link }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="objective text-left">
+			<h4 class="highlight">🧭 Objective</h4>
+			{{ me.objective }}
+		</div>
+		<div class="skills text-left">
+			<h4 class="highlight">🎒 Skills</h4>
+			<div v-for="cat of Object.keys(me.skills)" :key="cat">
+				<h5 class="skill-category">{{ cat }}</h5>
+				<span v-for="skill of me.skills[cat]" :key="skill" class="skill">{{ skill }}, </span>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="experience text-left">
+				<h4 class="highlight">👨‍💻 Experience</h4>
+				<div v-for="item of me.experience" :key="item.name" class="experience-item">
+					<span class="left">
+						<strong>{{ item.name }}</strong>
+					</span>
+					<span class="right">{{ item.startDate }} - {{ item.endDate }}</span>
+					<br />
+					<div class="title">
+						<em>{{ item.title }}</em>
+					</div>
+					<ul>
+						<li v-for="detail of item.details" :key="detail" class="detail">
+							{{ detail }}
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="education text-left">
+				<h4 class="highlight">📚 Education</h4>
+				<div v-for="item of me.education" :key="item.name" class="education-item">
+					<span class="left">
+						<strong>{{ item.name }}</strong>
+					</span>
+					<span class="right">{{ item.startDate }} - {{ item.endDate }}</span>
+					<br />
+					<div class="title">
+						<em>{{ item.title }}</em>
+					</div>
+					<ul>
+						<li v-for="detail of item.details" :key="detail" class="detail">
+							{{ detail }}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+	import me from '../models/aboutMe.js';
+	export default {
+		name: 'ResumeComponent',
+		data() {
+			return {
+				me: me,
+			};
+		},
+	};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+	.resume {
+		border: 1px solid var(--Dark-Blue);
+		padding: 20px;
+	}
+	.header {
+		display: grid;
+		grid-template-areas: 'c b a';
+	}
+
+	.header .contact-section {
+		grid-area: a;
+	}
+
+	.header .image-section {
+		grid-area: b;
+		display: flex;
+		justify-content: flex-start;
+	}
+	.header .links-section {
+		grid-area: c;
+	}
+	.profile-img {
+		max-width: 160px;
+	}
+	.links .link {
+		list-style: none;
+	}
+	a {
+		color: var(--Blue);
+	}
+	h4 {
+		color: var(--Blue);
+		margin: 20px 0 5px;
+		padding-bottom: 4px;
+		border-bottom: 1px solid var(--Blue);
+	}
+	.highlight {
+		position: relative;
+	}
+	.highlight::after {
+		content: '';
+		position: absolute;
+		width: 85px;
+		height: 0.9rem;
+		background-color: var(--Orange);
+		top: 8px;
+		left: 24px;
+		z-index: -1;
+	}
+	.skill-category {
+		margin: 15px 0 0;
+
+		text-decoration: underline;
+	}
+	.skill:first-of-type {
+		padding-left: 10px;
+	}
+	.skill {
+		font-size: 0.9rem;
+	}
+
+	.text-left {
+		text-align: left;
+	}
+	.text-right {
+		text-align: right;
+	}
+	.experience .left,
+	.education .left {
+		float: left;
+	}
+	.experience .right,
+	.education .right {
+		float: right;
+	}
+	.bottom {
+		display: grid;
+		grid-template-areas: 'exp exp edu';
+	}
+	.experience {
+		grid-area: exp;
+		padding-right: 10px;
+	}
+	.education {
+		grid-area: edu;
+	}
+	@media screen and (max-width: 900px) {
+		.header {
+			grid-template-areas:
+				'c b '
+				'a b';
+		}
+		.header .contact-section {
+			text-align: left;
+		}
+		.header .links-section {
+			text-align: left;
+		}
+		.bottom {
+			grid-template-areas:
+				'exp'
+				'edu';
+		}
+	}
+	@media screen and (max-width: 700px) {
+		.header {
+			grid-template-areas:
+				'b '
+				'a'
+				'c';
+			.image-section {
+				display: flex;
+				justify-content: center;
+				margin-bottom: 5px;
+			}
+		}
+
+		.skill {
+			display: block;
+			font-size: 0.8rem;
+			&:first-of-type {
+				padding: 0;
+			}
+		}
+		.skill .detail {
+			font-size: 0.8rem;
+		}
+	}
+</style>

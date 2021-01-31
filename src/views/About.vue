@@ -1,5 +1,12 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+	<div class="about">
+		<resume-component />
+	</div>
 </template>
+
+<script>
+	import ResumeComponent from '../components/ResumeComponent.vue';
+	export default {
+		components: { ResumeComponent },
+	};
+</script>
