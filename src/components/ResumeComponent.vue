@@ -6,7 +6,7 @@
 				<div class="phone">{{ me.phone }}</div>
 			</div>
 			<div class="image-section">
-				<img class="profile-img" src="@/assets/img/profile.jpg" />
+				<img class="profile-img" src="@/assets/img/profile-1.jpg" />
 			</div>
 			<div class="links-section text-left">
 				<div class="email">
@@ -20,8 +20,8 @@
 			</div>
 		</div>
 		<div class="objective text-left">
-			<h4 class="highlight">🧭 Objective</h4>
-			{{ me.objective }}
+			<h4 class="highlight">📝 Summary</h4>
+			<span>{{ me.objective }}</span>
 		</div>
 		<div class="skills text-left">
 			<h4 class="highlight">🎒 Skills</h4>
