@@ -2,8 +2,8 @@
 	<div id="app">
 		<div id="nav">
 			<div class="name">Joe McBroom</div>
-			<!-- <router-link to="/">Home</router-link>
-			<router-link to="/about">About</router-link> -->
+			<router-link to="/">Home</router-link>
+			<router-link to="/movies">Movie App</router-link>
 		</div>
 		<div class="body">
 			<router-view />
@@ -37,7 +37,6 @@
 		text-shadow: 0px 1px 1px var(--Dark-Blue);
 		padding-bottom: 5px;
 	}
-
 	#nav a,
 	h1,
 	h2,
@@ -73,6 +72,9 @@
 		margin-bottom: 4px;
 		text-decoration: none;
 	}
+	/* #nav a:first-of-type {
+		margin-top: 15px;
+	} */
 
 	@media screen and (max-width: 900px) {
 		#nav {
@@ -102,6 +104,12 @@
 		.name {
 			position: static;
 			padding-bottom: 10px;
+		}
+		#nav {
+			flex-direction: column;
+		}
+		#nav a:last-of-type {
+			border: none;
 		}
 	}
 

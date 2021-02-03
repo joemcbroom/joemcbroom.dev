@@ -2,7 +2,9 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 
-Vue.config.productionTip = false;
+const eventHub = new Vue();
+
+export default eventHub;
 
 new Vue({
 	router,
