@@ -6,15 +6,21 @@
 				<div class="phone">{{ me.phone }}</div>
 			</div>
 			<div class="image-section">
-				<img class="profile-img" src="@/assets/img/profile-1.jpg" />
+				<img
+					class="profile-img"
+					src="@/assets/img/profile-1.jpg"
+					alt="Image of the site's Author"
+				/>
 			</div>
 			<div class="links-section text-left">
 				<div class="email">
-					<a :href="`mailto:${me.email}`">{{ me.email }}</a>
+					<a :href="`mailto:${me.email}`">Email <mail-icon class="pr-2" /> </a>
 				</div>
 				<div class="links">
-					<div v-for="link of me.links" :key="link" class="link">
-						<a :href="`http://${link}`">{{ link }}</a>
+					<div v-for="{ name, href } of me.links" :key="name" class="link">
+						<a :href="`http://${href}`">
+							{{ name }}
+						</a>
 					</div>
 				</div>
 			</div>
@@ -87,6 +93,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+	.pr-2 {
+		padding-right: 5px;
+	}
 	.resume {
 		border: 1px solid var(--Dark-Blue);
 		padding: 20px;
@@ -103,7 +112,7 @@
 	.header .image-section {
 		grid-area: b;
 		display: flex;
-		justify-content: flex-start;
+		justify-content: center;
 	}
 	.header .links-section {
 		grid-area: c;
@@ -116,6 +125,7 @@
 	}
 	a {
 		color: var(--Blue);
+		text-decoration: none;
 	}
 	h4 {
 		color: var(--Blue);
@@ -174,14 +184,6 @@
 		grid-area: edu;
 	}
 	@media screen and (max-width: 900px) {
-		.header {
-			grid-template-areas:
-				'c b '
-				'a b';
-		}
-		.header .contact-section {
-			text-align: left;
-		}
 		.header .links-section {
 			text-align: left;
 		}
@@ -194,13 +196,18 @@
 	@media screen and (max-width: 700px) {
 		.header {
 			grid-template-areas:
-				'b '
-				'a'
-				'c';
+				'b b'
+				'a c';
 			.image-section {
 				display: flex;
 				justify-content: center;
 				margin-bottom: 5px;
+			}
+			.contact-section {
+				text-align: left;
+			}
+			.links-section.text-left {
+				text-align: right;
 			}
 		}
 

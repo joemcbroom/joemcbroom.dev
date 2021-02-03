@@ -12,7 +12,10 @@ module.exports = {
 	email: 'joe.mcbroom.10@gmail.com',
 	birthday: '01/12/1987',
 	age: `_calculateAge(new Date('01/12/1987'))`,
-	links: ['linkedin.com/in/joseph-mcbroom', 'github.com/jumokee'],
+	links: [
+		{ name: 'LinkedIn', href: 'linkedin.com/in/joseph-mcbroom' },
+		{ name: 'GitHub', href: 'github.com/jumokee' },
+	],
 	objective:
 		'Highly motivated, analytical, and people focused.  Software developer specializing in Node.js, Java, JavaScript, HTML, CSS, jQuery and IBM WebSphere. Strong knowledge of Object-Oriented programming and web application development.',
 	skills: {

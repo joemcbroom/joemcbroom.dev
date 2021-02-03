@@ -18,6 +18,7 @@
 					type="text"
 					@keyup="triggerSearch"
 					@keyup.enter="$event.target.blur()"
+					placeholder="Eg. The Big Lebowski"
 				/>
 			</div>
 		</div>
