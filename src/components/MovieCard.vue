@@ -28,7 +28,7 @@
 		},
 		data() {
 			return {
-				OMDB_API_URL: `http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&`,
+				OMDB_API_URL: `https://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&`,
 				title: this.movie.Title,
 				year: this.movie.Year,
 				poster: this.movie.Poster,
