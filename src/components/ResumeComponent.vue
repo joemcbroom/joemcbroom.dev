@@ -14,11 +14,11 @@
 			</div>
 			<div class="links-section text-left">
 				<div class="email">
-					<a :href="`mailto:${me.email}`">Email <mail-icon class="pr-2" /> </a>
+					<a target="_blank" :href="`mailto:${me.email}`">Email <mail-icon class="pr-2" /> </a>
 				</div>
 				<div class="links">
 					<div v-for="{ name, href } of me.links" :key="name" class="link">
-						<a :href="`http://${href}`">
+						<a target="_blank" :href="`http://${href}`">
 							{{ name }}
 						</a>
 					</div>
