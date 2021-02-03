@@ -27,7 +27,9 @@
 			<h4 class="highlight">🎒 Skills</h4>
 			<div v-for="cat of Object.keys(me.skills)" :key="cat">
 				<h5 class="skill-category">{{ cat }}</h5>
-				<span v-for="skill of me.skills[cat]" :key="skill" class="skill">{{ skill }}, </span>
+				<span v-for="(skill, i) of me.skills[cat]" :key="skill" class="skill">
+					{{ skill }}<span v-if="i != me.skills[cat].length - 1" class="skill-comma">, </span>
+				</span>
 			</div>
 		</div>
 		<div class="bottom">
@@ -208,9 +210,12 @@
 			&:first-of-type {
 				padding: 0;
 			}
-		}
-		.skill .detail {
-			font-size: 0.8rem;
+			.detail {
+				font-size: 0.8rem;
+			}
+			.skill-comma {
+				display: none;
+			}
 		}
 	}
 </style>
