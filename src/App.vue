@@ -4,12 +4,20 @@
 			<div class="name">Joe McBroom</div>
 			<router-link to="/">Home</router-link>
 			<router-link to="/movies">Movie App</router-link>
+			<crypto-feed />
 		</div>
 		<div class="body">
 			<router-view />
 		</div>
 	</div>
 </template>
+
+<script>
+	import CryptoFeed from '@/components/CryptoFeed';
+	export default {
+		components: { CryptoFeed },
+	};
+</script>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap');

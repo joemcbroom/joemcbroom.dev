@@ -12,6 +12,7 @@
 		"core-js": "^3.6.5",
 		"dotenv-webpack": "^6.0.0",
 		"googleapis": "^39.2.0",
+		"gsap": "^3.6.0",
 		"vue": "^2.6.11",
 		"vue-feather-icons": "^5.1.0",
 		"vue-router": "^3.2.0"
