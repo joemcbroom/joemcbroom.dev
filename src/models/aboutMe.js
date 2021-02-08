@@ -47,7 +47,7 @@ module.exports = {
 			endDate: 'Present',
 			title: 'Enterprise Web Developer',
 			details: [
-				'Utilizing various technologies to develop the front end experience for users and authors of various State of Ohio agencies',
+				'Utilizing varied technologies to develop the front end experience for users and authors of various State of Ohio agencies',
 				'Designed, developed, and tested a feature rich comment dashboard for a large state agency',
 				'Work with AGILE practices, including standups, in small teams',
 				'Developing strong debugging skills',
