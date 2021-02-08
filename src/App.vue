@@ -1,17 +1,30 @@
 <template>
 	<div id="app">
-		<div id="nav">
+		<nav id="nav">
 			<div class="name">Joe McBroom</div>
 			<router-link to="/">Home</router-link>
 			<router-link to="/movies">Movie App</router-link>
-		</div>
-		<div class="body">
+			<router-link to="/contact">Contact</router-link>
+		</nav>
+
+		<main class="body">
 			<router-view />
-		</div>
+		</main>
 	</div>
 </template>
 
-<style>
+<script>
+	export default {
+		name: 'App',
+		methods: {
+			handleFormSubmit(e) {
+				debugger;
+			},
+		},
+	};
+</script>
+
+<style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 	:root {
@@ -28,6 +41,7 @@
 		text-align: center;
 		color: var(--Dark-Blue);
 		max-width: 1000px;
+		height: 100%;
 	}
 
 	.name {
@@ -64,6 +78,12 @@
 	.body {
 		padding-left: 230px;
 		padding-top: 70px;
+
+		> div {
+			height: 949px;
+			border: 1px solid var(--Dark-Blue);
+			overflow-y: scroll;
+		}
 	}
 
 	#nav a {
@@ -72,9 +92,10 @@
 		margin-bottom: 4px;
 		text-decoration: none;
 	}
-	/* #nav a:first-of-type {
-		margin-top: 15px;
-	} */
+	html,
+	body {
+		margin: 0;
+	}
 
 	@media screen and (max-width: 900px) {
 		#nav {
@@ -110,6 +131,10 @@
 		}
 		#nav a:last-of-type {
 			border: none;
+		}
+		.body > div {
+			height: 75vh;
+			overflow-y: scroll;
 		}
 	}
 

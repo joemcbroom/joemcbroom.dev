@@ -12,10 +12,13 @@
 		position: relative;
 		width: 80px;
 		height: 80px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.lds-facebook div {
 		display: inline-block;
-		position: absolute;
+		margin: 0 3px;
 		left: 8px;
 		width: 16px;
 		background: #cef;

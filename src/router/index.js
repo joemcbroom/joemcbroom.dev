@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import About from '../views/About.vue';
-import Movies from '../views/Movies.vue';
+import About from '@/views/About.vue';
+import Movies from '@/views/Movies.vue';
+import Contact from '@/views/Contact.vue';
+import People from '@/views/People.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,16 @@ const routes = [
 		path: '/movies',
 		name: 'Movies',
 		component: Movies,
+	},
+	{
+		path: '/contact',
+		name: 'Contact',
+		component: Contact,
+	},
+	{
+		path: '/people',
+		name: 'People',
+		component: People,
 	},
 ];
 

@@ -16,9 +16,9 @@
 					v-model="searchTerm"
 					class="search-field"
 					type="text"
+					placeholder="Eg. The Big Lebowski"
 					@keyup="triggerSearch"
 					@keyup.enter="$event.target.blur()"
-					placeholder="Eg. The Big Lebowski"
 				/>
 			</div>
 		</div>
@@ -92,11 +92,11 @@
 
 <style lang="scss" scoped>
 	#movie-app {
-		border: 1px solid var(--Dark-Blue);
-		box-shadow: inset 1px 1px 2px var(--Dark-Blue);
+		box-sizing: border-box;
+		// border: 1px solid var(--Dark-Blue);
+		// box-shadow: inset 1px 1px 2px var(--Dark-Blue);
 		padding: 20px;
-		height: 80vh;
-		overflow-y: scroll;
+		// height: 949px;
 	}
 	.page-description {
 		width: 75%;

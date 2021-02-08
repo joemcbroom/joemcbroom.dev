@@ -14,7 +14,7 @@
 			</div>
 			<div class="links-section text-left">
 				<div class="email">
-					<a target="_blank" :href="`mailto:${me.email}`">Email <mail-icon class="pr-2" /> </a>
+					<a target="_blank" :href="`mailto:${me.email}`">Email</a>
 				</div>
 				<div class="links">
 					<div v-for="{ name, href } of me.links" :key="name" class="link">
@@ -97,7 +97,7 @@
 		padding-right: 5px;
 	}
 	.resume {
-		border: 1px solid var(--Dark-Blue);
+		// border: 1px solid var(--Dark-Blue);
 		padding: 20px;
 	}
 	.header {

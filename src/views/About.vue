@@ -10,3 +10,9 @@
 		components: { ResumeComponent },
 	};
 </script>
+
+<style scoped>
+	.about {
+		border: 1px solid var(--Dark-Blue);
+	}
+</style>
