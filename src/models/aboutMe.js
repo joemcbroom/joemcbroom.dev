@@ -24,6 +24,7 @@ module.exports = {
 			'HTML',
 			'CSS',
 			'SCSS/Sass',
+			'Vue.js',
 			'JavaScript',
 			'jQuery',
 			'Bootstrap',
