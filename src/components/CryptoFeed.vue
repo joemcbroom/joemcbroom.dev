@@ -30,45 +30,48 @@
 			},
 		},
 		created() {
-			this.establishWebsocket();
+			this.establishWebsocket('BTC-USD');
 		},
 		methods: {
-			establishWebsocket() {
+			establishWebsocket(productId) {
 				let coinbaseConnection = {
 					type: 'subscribe',
-					product_ids: ['BTC-USD'],
+					product_ids: [productId],
 					channels: [
 						{
 							name: 'ticker',
-							product_ids: ['BTC-USD'],
+							product_ids: [productId],
 						},
 					],
 				};
-				console.log('Starting connection to WebSocket Server');
 				this.connection = new WebSocket(this.COINBASE_WSS_URL);
 
-				this.connection.onmessage = (event) => {
-					let msg = JSON.parse(event.data);
-					if (msg.type == 'ticker') {
-						let time = new Date(msg.time);
-						let timeToBeat = new Date(this.currentTime.getTime() + 5000);
-						if (time > timeToBeat) {
-							let price = +msg.price;
-							this.btcPrice = price.toFixed(2);
-							this.currentTime = time;
-						}
-					}
-				};
+				this.connection.onmessage = this.getTickerPrice;
 
 				this.connection.onclose = function(event) {
 					console.log('closing', event);
 				};
 
-				this.connection.onopen = (event) => {
-					console.log(event);
-					console.log('Successfully connected to the coinbase websocket server...');
-					this.connection.send(JSON.stringify(coinbaseConnection));
-				};
+				this.connection.onopen = () => this.connection.send(JSON.stringify(coinbaseConnection));
+			},
+			getTickerPrice(event) {
+				let msg = JSON.parse(event.data);
+				if (msg.type == 'ticker') {
+					let time = new Date(msg.time);
+					let timeToBeat = new Date(this.currentTime.getTime() + 5000);
+					if (this.getTickerPrice.hasRun) {
+						if (time >= timeToBeat) {
+							let price = +msg.price;
+							this.btcPrice = price.toFixed(2);
+							this.currentTime = time;
+						}
+					} else {
+						this.getTickerPrice.hasRun = true;
+						let price = +msg.price;
+						this.btcPrice = price.toFixed(2);
+						this.currentTime = time;
+					}
+				}
 			},
 		},
 	};

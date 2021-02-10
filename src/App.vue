@@ -4,7 +4,7 @@
 			<div class="name">Joe McBroom</div>
 			<router-link to="/">Home</router-link>
 			<router-link to="/movies">Movie App</router-link>
-			<crypto-feed />
+			<router-link to="/crypto" class="crypto-link"><crypto-feed /></router-link>
 		</div>
 		<div class="body">
 			<router-view />
@@ -59,7 +59,7 @@
 		width: 160px;
 		position: fixed;
 		z-index: 1;
-		overflow-x: hidden;
+		/* overflow-x: hidden; */
 		padding-top: 20px;
 		top: 70px;
 		left: 70px;
@@ -79,6 +79,9 @@
 		color: var(--Blue);
 		margin-bottom: 4px;
 		text-decoration: none;
+	}
+	.crypto-link {
+		width: 100%;
 	}
 	/* #nav a:first-of-type {
 		margin-top: 15px;
