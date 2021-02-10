@@ -31,16 +31,18 @@
 		},
 		methods: {
 			getPeople() {
+				console.log(process.env.NODE_ENV);
 				let query = {
-					query: `{ people {
-                                name
-                                avatar
-                                id
-                                company {
-                                    name
-                                    address
-                                }
-                            }
+					query: `{ 
+								people {
+                                	name
+                                	avatar
+                                	id
+                                	company {
+                                    	name
+                                    	address
+                                	}
+                            	}
                             }
                         `,
 				};

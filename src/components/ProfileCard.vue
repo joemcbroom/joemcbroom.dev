@@ -3,13 +3,21 @@
 		<div class="flipper">
 			<div class="card front">
 				<div class="top-card">
-					<img :src="person.avatar" alt="" hidden @load="imageLoaded = true" />
+					<img
+						:src="`https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`"
+						alt=""
+						hidden
+						@load="imageLoad()"
+					/>
 					<div
 						v-if="imageLoaded"
 						class="image"
-						:style="{ backgroundImage: `url(${person.avatar})` }"
+						:style="{
+							backgroundImage: `url(https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png)`,
+						}"
 					></div>
 					<loading-indicator v-else class="loading-indicator" />
+					<div>{{ person.name }}</div>
 				</div>
 			</div>
 
@@ -39,6 +47,14 @@
 				imageLoaded: false,
 			};
 		},
+		methods: {
+			imageLoad() {
+				let _this = this;
+				setTimeout(() => {
+					_this.imageLoaded = true;
+				}, Math.floor(Math.random() * 10));
+			},
+		},
 	};
 </script>
 
@@ -56,12 +72,14 @@
 		border: 1px solid #333;
 		height: 165px;
 		width: 150px;
+		background-position: center;
 	}
 	.loading-indicator {
 		height: 165px;
 		width: 150px;
 		border: 1px solid #333;
 		border-radius: 50%;
+		margin: auto;
 	}
 	.card {
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -119,7 +137,7 @@
 	.front,
 	.back {
 		width: 100%;
-		min-height: 200px;
+		min-height: 225px;
 	}
 
 	/* flip speed goes here */
