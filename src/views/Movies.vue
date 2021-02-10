@@ -16,9 +16,9 @@
 					v-model="searchTerm"
 					class="search-field"
 					type="text"
+					placeholder="Eg. The Big Lebowski"
 					@keyup="triggerSearch"
 					@keyup.enter="$event.target.blur()"
-					placeholder="Eg. The Big Lebowski"
 				/>
 			</div>
 		</div>

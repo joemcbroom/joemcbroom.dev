@@ -16,6 +16,10 @@ const routes = [
 		name: 'Movies',
 		component: Movies,
 	},
+	{
+		path: '*',
+		component: About,
+	},
 ];
 
 const router = new VueRouter({
