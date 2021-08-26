@@ -17,10 +17,11 @@ module.exports = {
     { name: 'GitHub', href: 'github.com/jumokee' },
   ],
   objective:
-    'Highly motivated, analytical, and people focused.  Software developer specializing in Node.js, Java, JavaScript, HTML, CSS, jQuery and IBM WebSphere. Strong knowledge of Object-Oriented programming and web application development.',
+    'Highly motivated, analytical, and people focused.  Software developer specializing in full stack Javascript development.  Strong knowledge of Object-Oriented programming and web application development.',
   skills: {
     'Object Oriented Programming': ['Node.js (Javascript/Typescript)', 'JAVA'],
     'Front End Technologies': [
+      'Ember.js',
       'HTML',
       'CSS',
       'SCSS/Sass',
@@ -30,7 +31,8 @@ module.exports = {
       'Bootstrap',
       'HCL (IBM) Websphere Content Management',
     ],
-    'Development Tools/Techniquies': [
+    'Development Tools/Techniques': [
+      'GraphQL',
       'AWS (Lambda, S3)',
       'Agile',
       'Unit Testing (JUnit, JEST)',
@@ -39,7 +41,7 @@ module.exports = {
       'Unix Command Line',
       'JSON',
     ],
-    'Database Programming': ['PostgreSQL', 'DbVisualizer'],
+    'Database Programming': ['RethinkDB', 'PostgreSQL', 'DbVisualizer'],
   },
   experience: [
     {
