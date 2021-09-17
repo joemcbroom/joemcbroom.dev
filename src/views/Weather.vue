@@ -2,7 +2,14 @@
   <div class="weather">
     <h1>Check your local forecast</h1>
     <form @submit.prevent="triggerSearch">
-      <input v-model="searchTerm" type="number" name="zipcode" placeholder="Enter Zipcode" />
+      <input
+        v-model="searchTerm"
+        type="text"
+        name="zipcode"
+        placeholder="Enter Zipcode"
+        autocomplete="off"
+        @keyup="triggerSearch"
+      />
     </form>
     <div v-if="!searchTerm && !error" class="search-term highlight">
       Please Enter a Search Term
@@ -13,8 +20,10 @@
     </div>
     <div class="weather-cards">
       <div v-for="day in days" :key="day.dt" class="card">
-        <img :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`" />
-        <div>{{ day.main.temp }}</div>
+        <img :src="require(`@/assets/img/weather/${day.weather[0].icon}.png`)" />
+        <div class="date">{{ day.formattedDate }}</div>
+        <div>{{ day.weather[0].main }}</div>
+        <div class="mt-auto">{{ day.main.temp }}°F</div>
       </div>
     </div>
   </div>
@@ -27,34 +36,60 @@ export default {
   components: { SearchError },
   data() {
     return {
-      OPENWEATHER_API_URL_FORECAST: `https://api.openweathermap.org/data/2.5/forecast?appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial`,
       searchTerm: '',
       error: '',
       days: [],
+      units: 'imperial',
     };
+  },
+  computed: {
+    OPENWEATHER_API_URL_FORECAST() {
+      return `https://api.openweathermap.org/data/2.5/forecast?appid=${process.env.OPEN_WEATHER_API_KEY}&units=${this.units}&zip=${this.searchTerm}`;
+    },
   },
   methods: {
     triggerSearch() {
-      this.isLoading = true;
-      fetch(`${this.OPENWEATHER_API_URL_FORECAST}&zip=${this.searchTerm}`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((forecast) => {
-          const days = forecast.list.reduce((acc, item) => {
-            if (item.dt_txt.includes('18:00:00')) {
-              acc.push(item);
-            }
-            return acc;
-          }, []);
-          this.days = days;
-        });
+      try {
+        if (this.searchTerm.length < 5) {
+          throw new Error('Please Enter a Valid Zipcode');
+        } else {
+          this.isLoading = true;
+          fetch(this.OPENWEATHER_API_URL_FORECAST)
+            .then((res) => {
+              return res.json();
+            })
+            .then((forecast) => {
+              const days = forecast.list.reduce((acc, item) => {
+                if (item.dt_txt.includes('18:00:00')) {
+                  item.formattedDate = dayjs(item.dt_txt).format('dddd | MMM D');
+                  acc.push(item);
+                }
+                return acc;
+              }, []);
+              this.days = days;
+              this.error = '';
+              this.isLoading = false;
+            })
+            .catch((err) => {
+              this.days = [];
+              this.error = err.message;
+              this.isLoading = false;
+            });
+        }
+      } catch (err) {
+        this.days = [];
+        this.error = err.message;
+        this.isLoading = false;
+      }
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.mt-auto {
+  margin-top: auto;
+}
 .weather-cards {
   display: flex;
   justify-content: space-around;
@@ -69,6 +104,12 @@ export default {
     min-height: 8rem;
     border: 1px solid darkgrey;
     margin: 0 1rem;
+    .date {
+      font-size: 0.75rem;
+    }
+    img {
+      max-width: 2.5rem;
+    }
   }
 }
 </style>
