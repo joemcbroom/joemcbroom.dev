@@ -71,9 +71,7 @@ export default {
               this.isLoading = false;
             })
             .catch((err) => {
-              this.days = [];
-              this.error = err.message;
-              this.isLoading = false;
+              throw new Error('Please Enter a Valid Zipcode');
             });
         }
       } catch (err) {
@@ -90,25 +88,42 @@ export default {
 .mt-auto {
   margin-top: auto;
 }
+h1 {
+  font-size: 1.5rem;
+}
 .weather-cards {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
   .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex-basis: 100%;
+    flex-basis: 25%;
     min-height: 8rem;
     border: 1px solid darkgrey;
-    margin: 0 1rem;
+    box-shadow: 1px 1px 2px #222;
+    margin: auto;
+    padding: 1rem 0 0.25rem;
     .date {
       font-size: 0.75rem;
+      margin: 0.25rem 0;
     }
     img {
       max-width: 2.5rem;
+      transition: all 0.5s ease-in-out;
+      filter: drop-shadow(1px 1px 1px #222);
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
+        // -webkit-filter: drop-shadow(2px 2px 2px #222);
+        filter: drop-shadow(1px 1px 5px #222);
+      }
     }
   }
 }

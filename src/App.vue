@@ -13,8 +13,8 @@
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 :root {
   --Red: #ef476fff;
   --Orange: #ffd166ff;
@@ -30,7 +30,7 @@
   min-height: 80vh;
 }
 #app {
-  font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -51,7 +51,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Proza Libre", sans-serif;
+  font-family: 'Proza Libre', sans-serif;
 }
 
 #nav {
@@ -123,5 +123,19 @@ h5 {
 
 #nav a.router-link-exact-active {
   color: var(--Red);
+}
+
+html {
+  font-size: 14px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(14px + 4 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 18px;
+  }
 }
 </style>
