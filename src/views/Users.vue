@@ -1,8 +1,9 @@
 <template>
   <div id="users">
-    <div v-if="Object.keys(info).length">Results: {{ info.results }}</div>
+    <div v-if="Object.keys(info).length" class="results">Results: {{ info.results }}</div>
     <FiltersList v-if="Object.keys(filters).length" :filters="filters" />
     <UsersList v-if="users.length" :users="users" />
+    <LoadingIndicator v-else spinner-type="ripple" />
     <search-error v-if="error" :error="error" class="highlight" />
   </div>
 </template>
@@ -10,8 +11,9 @@
 <script>
 import UsersList from '../components/UsersList';
 import FiltersList from '../components/FiltersList';
+import LoadingIndicator from '../components/LoadingIndicator.vue';
 export default {
-  components: { UsersList, FiltersList },
+  components: { UsersList, FiltersList, LoadingIndicator },
   data() {
     return {
       users: [],
@@ -28,9 +30,11 @@ export default {
       fetch('https://randomuser.me/api/?results=10')
         .then((res) => res.json())
         .then(({ results: users, info }) => {
-          this.users = users;
           this.info = info;
           this.filters = this.buildFilters(users);
+          setTimeout(() => {
+            this.users = users;
+          }, 1000);
         });
     },
     buildFilters(users) {
@@ -51,5 +55,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

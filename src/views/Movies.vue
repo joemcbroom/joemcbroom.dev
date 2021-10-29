@@ -91,9 +91,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#movie-app {
-  height: 80vh;
-  overflow-y: scroll;
+h2 {
+  margin-top: 0;
 }
 .page-description {
   width: 75%;
@@ -137,6 +136,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
 }
 .list-item {
   display: inline-block;

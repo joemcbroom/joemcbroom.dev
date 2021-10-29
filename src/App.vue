@@ -68,7 +68,7 @@ h5 {
 }
 .body > div {
   border: 1px solid var(--Dark-Blue);
-  box-shadow: 3px 3px 10px var(--Dark-Blue);
+  box-shadow: 2px 2px 5px var(--Dark-Blue);
   padding: 2rem;
 }
 
