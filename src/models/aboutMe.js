@@ -19,12 +19,13 @@ module.exports = {
   objective:
     'Highly motivated, analytical, and people focused.  Software developer specializing in full stack Javascript development.  Strong knowledge of Object-Oriented programming and web application development.',
   skills: {
-    'Object Oriented Programming': ['Node.js (Javascript/Typescript)', 'JAVA'],
+    'Back End and OOP': ['Node.js (Javascript/Typescript)', 'JAVA'],
     'Front End Technologies': [
       'Ember.js',
       'HTML',
       'CSS',
       'SCSS/Sass',
+      'Tailwind CSS',
       'Vue.js',
       'JavaScript',
       'jQuery',
@@ -32,6 +33,8 @@ module.exports = {
       'HCL (IBM) Websphere Content Management',
     ],
     'Development Tools/Techniques': [
+      'ElasticSearch',
+      'Redis',
       'GraphQL',
       'AWS (Lambda, S3)',
       'Agile',
@@ -51,9 +54,8 @@ module.exports = {
       title: 'Javascript Application Engineer',
       details: [
         'Full stack developer',
-        'Designed, developed, and tested a feature rich comment dashboard for a large state agency',
         'Building and maintaining user interfaces for SaaS education platform',
-        'Utilize Ember.js, Node.js, and GraphQL',
+        'Utilize Ember.js, Node.js, GraphQL',
         'Work with AGILE practices, including standups, in small teams',
       ],
     },
