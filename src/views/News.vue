@@ -1,9 +1,9 @@
 <template>
   <div id="news-app">
-    <h1>News</h1>
+    <h2>News App</h2>
     <div class="news-search">
       <span>
-        Search for a movie
+        Search for a News Topic
       </span>
       <search-bar :on-submit="getNews" :search-term.sync="searchTerm" />
     </div>
@@ -50,6 +50,7 @@ export default {
   },
   methods: {
     async getNews() {
+      this.isLoading = true;
       try {
         const { articles, total } = await this.newsService.getArticles(this.searchTerm);
         this.newsList = articles;
