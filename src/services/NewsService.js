@@ -19,7 +19,7 @@ export default class NewsService {
    * @param {string} query - The query to get resources from the API.
    */
   async getArticles(query = '') {
-    const url = `${this.#endpointUrl}&q=${query}`;
+    const url = `${this.#endpointUrl}&pageSize=100&q=${query}`;
     const response = await fetch(url);
     const data = await response.json();
     if (data.status === 'error') {

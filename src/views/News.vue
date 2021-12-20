@@ -12,19 +12,29 @@
     <div v-if="!error && Object.keys(newsList).length" class="search-term highlight">
       Results for: {{ searchTerm }}
     </div>
-    <div v-for="(news, index) in newsList" :key="index" class="news-item">
-      <div class="news-item-title">
-        <a :href="news.url" target="_blank">
-          {{ news.title }}
-        </a>
-      </div>
-      <div class="news-item-description">
-        {{ news.description }}
-      </div>
-      <div class="news-item-date">
-        {{ news.date }}
-      </div>
-    </div>
+
+    <transition-group name="list" tag="div" class="results-list">
+      <result-card
+        v-for="(news, index) in newsList"
+        :key="index"
+        :front-image="news.urlToImage ? news.urlToImage : FALLBACK_IMAGE"
+        class="news-item"
+      >
+        >
+        <template v-slot:front>
+          <div class="front-content">
+            <h3>{{ news.title }}</h3>
+          </div>
+        </template>
+
+        <template v-slot:back>
+          <div class="back-content">
+            <p>{{ news.description }}</p>
+            <a :href="news.url" target="_blank">Read More...</a>
+          </div>
+        </template>
+      </result-card>
+    </transition-group>
   </div>
 </template>
 
@@ -32,8 +42,10 @@
 import NewsService from '@/services/NewsService';
 import SearchError from '@/components/SearchError';
 import SearchBar from '@/components/SearchBar';
+import ResultCard from '@/components/ui/ResultCard';
+
 export default {
-  components: { SearchError, SearchBar },
+  components: { SearchError, SearchBar, ResultCard },
   data() {
     return {
       isLoading: false,
@@ -43,6 +55,8 @@ export default {
       error: '',
       newsList: [],
       totalResults: 0,
+      activeResultId: -1,
+      FALLBACK_IMAGE: require('@/assets/img/article-default.jpeg'),
     };
   },
   async created() {
@@ -100,6 +114,49 @@ export default {
       background-color: var(--Blue);
       padding: 2px;
     }
+  }
+}
+.results-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  // align-items: stretch;
+}
+.news-item {
+  width: 25%;
+  max-height: 250px;
+}
+.front-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  h3 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+  }
+}
+.back-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  p {
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  a {
+    font-size: 0.9rem;
+    color: var(--Blue);
+    text-decoration: none;
+    margin-top: auto;
   }
 }
 </style>
