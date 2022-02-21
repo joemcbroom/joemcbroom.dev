@@ -9,9 +9,11 @@
 		"test:unit": "vue-cli-service test:unit"
 	},
 	"dependencies": {
+		"animate.css": "^4.1.1",
 		"core-js": "^3.6.5",
 		"dotenv-webpack": "^6.0.0",
 		"googleapis": "^39.2.0",
+		"v-animate-css": "0.0.5",
 		"vue": "^2.6.11",
 		"vue-feather-icons": "^5.1.0",
 		"vue-router": "^3.2.0"
