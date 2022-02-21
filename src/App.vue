@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <div v-if="$route.name === 'CountingGame'" class="back-arrow">
-        <router-link to="/"><div class="caret"></div></router-link>
+        <router-link to="/"><div class="caret">For Keane ❤️</div></router-link>
       </div>
       <div v-else>
         <div class="name">Joe McBroom</div>
@@ -83,6 +83,7 @@ h5 {
   position: absolute;
   top: 1rem;
   left: 1rem;
+  padding-left: 1.2rem;
 }
 
 .caret:before {
