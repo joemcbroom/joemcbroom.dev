@@ -1,33 +1,35 @@
-function _calculateAge(birthday) {
+function _calculateAge (birthday) {
   // birthday is a date
   var ageDifMs = Date.now() - birthday.getTime();
   var ageDate = new Date(ageDifMs); // miliseconds from epoch
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
-module.exports = {
+export default {
   name: 'Joe McBroom',
   location: 'Columbus, OH',
   phone: '(818)809-8454',
   email: 'joe.mcbroom.10@gmail.com',
   birthday: '01/12/1987',
-  age: `_calculateAge(new Date('01/12/1987'))`,
+  age: `${_calculateAge(new Date('01/12/1987'))}`,
   links: [
     { name: 'LinkedIn', href: 'linkedin.com/in/joseph-mcbroom' },
     { name: 'GitHub', href: 'github.com/jumokee' },
   ],
   objective:
-    'Highly motivated, analytical, and people focused.  Software developer specializing in full stack Javascript development.  Strong knowledge of Object-Oriented programming and web application development.',
+    'Full stack software developer specializing in Javascript development. Proficient in creating dynamic web applications using technologies such as Node.js, React, and Vue.js. Strong understanding of object-oriented programming principles and experience with Agile development methodologies. Demonstrated ability to lead teams and deliver high-quality, scalable software solutions on time.',
   skills: {
     'Back End and OOP': ['Node.js (Javascript/Typescript)', 'JAVA'],
     'Front End Technologies': [
+      'JavaScript',
+      'React',
+      'Next.js',
+      'Vue.js',
+      'Tailwind CSS',
       'Ember.js',
       'HTML',
       'CSS',
       'SCSS/Sass',
-      'Tailwind CSS',
-      'Vue.js',
-      'JavaScript',
       'jQuery',
       'Bootstrap',
       'HCL (IBM) Websphere Content Management',
@@ -48,9 +50,20 @@ module.exports = {
   },
   experience: [
     {
-      name: 'Thought Industries',
-      startDate: 'Febuary 2021',
+      name: 'WillowTree',
+      startDate: 'March \'22',
       endDate: 'Present',
+      title: 'Senior Software Engineer',
+      details: [
+        'Full stack developer specializing in Next.js and React',
+        'Leading a team of contractors through a rewrite of a large complex application from Angular to Next.js',
+        'Work with AGILE practices, daily standups, 2 week sprints, etc.',
+      ]
+    },
+    {
+      name: 'Thought Industries',
+      startDate: 'Febuary \'21',
+      endDate: 'March \'22',
       title: 'Javascript Application Engineer',
       details: [
         'Full stack developer',
@@ -61,8 +74,8 @@ module.exports = {
     },
     {
       name: 'Base22',
-      startDate: 'August 2019',
-      endDate: 'Febuary 2021',
+      startDate: 'August \'19',
+      endDate: 'Febuary \'21',
       title: 'Enterprise Web Developer',
       details: [
         'Utilizing varied technologies to develop the front end experience for users and authors of various State of Ohio agencies',
@@ -76,8 +89,8 @@ module.exports = {
   education: [
     {
       name: 'Tech Elevator',
-      startDate: 'May 2019',
-      endDate: 'Aug 2019',
+      startDate: 'May \'19',
+      endDate: 'Aug \'19',
       title: 'Full Stack Bootcamp',
       details: [
         '14 week full stack software development program',

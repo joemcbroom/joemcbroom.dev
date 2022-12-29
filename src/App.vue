@@ -52,7 +52,7 @@ h5 {
   font-family: 'Proza Libre', sans-serif;
 }
 
-#nav {
+#nav > div {
   height: 100%;
   width: 160px;
   position: fixed;

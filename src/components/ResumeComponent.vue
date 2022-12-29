@@ -34,14 +34,21 @@
       <div v-for="cat of Object.keys(me.skills)" :key="cat">
         <h5 class="skill-category">{{ cat }}</h5>
         <span v-for="(skill, i) of me.skills[cat]" :key="skill" class="skill">
-          {{ skill }}<span v-if="i != me.skills[cat].length - 1" class="skill-comma">, </span>
+          {{ skill
+          }}<span v-if="i != me.skills[cat].length - 1" class="skill-comma"
+            >,
+          </span>
         </span>
       </div>
     </div>
     <div class="bottom">
       <div class="experience text-left">
         <h4 class="highlight">👨‍💻 Experience</h4>
-        <div v-for="item of me.experience" :key="item.name" class="experience-item">
+        <div
+          v-for="item of me.experience"
+          :key="item.name"
+          class="experience-item"
+        >
           <span class="left">
             <strong>{{ item.name }}</strong>
           </span>
@@ -59,7 +66,11 @@
       </div>
       <div class="education text-left">
         <h4 class="highlight">📚 Education</h4>
-        <div v-for="item of me.education" :key="item.name" class="education-item">
+        <div
+          v-for="item of me.education"
+          :key="item.name"
+          class="education-item"
+        >
           <span class="left">
             <strong>{{ item.name }}</strong>
           </span>
@@ -113,12 +124,18 @@ export default {
   grid-area: b;
   display: flex;
   justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  max-width: 160px;
+  margin: 0 auto;
 }
 .header .links-section {
   grid-area: c;
 }
 .profile-img {
-  max-width: 160px;
+  object-fit: cover;
+  transform: scale(1.2) translateY(10px);
+  width: 100%;
 }
 .links .link {
   list-style: none;

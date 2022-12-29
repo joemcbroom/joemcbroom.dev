@@ -4,7 +4,7 @@
       <span class="animate__animated animate__tada">{{ result }}</span>
       <img
         v-if="isCorrect"
-        class="animate__animated animate__pulse animate__infinite"
+        class="animate__animated animate__rollIn"
         src="../assets/img/arrows.png"
         @click="randomizeGameBoard()"
       />
@@ -54,7 +54,7 @@ const EMOJIS = [
   '😊',
   '😍',
   '😘',
-  '❤️'
+  '❤️',
 ];
 export default {
   name: 'CountingGame',
@@ -63,7 +63,7 @@ export default {
       randomNumber: null,
       emojis: [],
       result: 'hi',
-      isCorrect: false
+      isCorrect: false,
     };
   },
   mounted() {
@@ -99,21 +99,22 @@ export default {
           this.result = '';
         }, 1500);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 #counting-game {
-  height: 55vh;
-  width: 100vw;
+  height: calc(100vh - 7rem);
+  width: 100%;
   position: absolute;
   top: 51px;
   left: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   padding-top: 3rem;
 }
 
@@ -139,6 +140,8 @@ export default {
     outline: 1px solid var(--Green);
     border-radius: 50%;
     padding: 0.5rem;
+    cursor: pointer;
+    transform: scaleX(-1);
   }
 
   &.correct {
@@ -167,9 +170,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  max-width: 768px;
+  margin-top: auto;
   .answer {
     width: calc(100% / 6);
     aspect-ratio: 1/1;
@@ -180,6 +182,7 @@ export default {
     background: var(--Blue);
     color: white;
     font-size: 2rem;
+    cursor: pointer;
     &.has-result {
       pointer-events: none;
       background: lightgray;
