@@ -14,7 +14,7 @@ export default {
   age: `${_calculateAge(new Date('01/12/1987'))}`,
   links: [
     { name: 'LinkedIn', href: 'linkedin.com/in/joseph-mcbroom' },
-    { name: 'GitHub', href: 'github.com/jumokee' },
+    { name: 'GitHub', href: 'github.com/joemcbroom' },
   ],
   objective:
     'Full stack software developer specializing in Typescript development. Proficient in creating dynamic web applications using technologies such as Node.js, React, and Vue.js. Strong understanding of object-oriented programming principles and experience with Agile development methodologies. Demonstrated ability to lead teams and deliver high-quality, scalable software solutions on time.',
