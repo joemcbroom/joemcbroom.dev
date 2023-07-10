@@ -17,7 +17,7 @@ export default {
     { name: 'GitHub', href: 'github.com/jumokee' },
   ],
   objective:
-    'Full stack software developer specializing in Javascript development. Proficient in creating dynamic web applications using technologies such as Node.js, React, and Vue.js. Strong understanding of object-oriented programming principles and experience with Agile development methodologies. Demonstrated ability to lead teams and deliver high-quality, scalable software solutions on time.',
+    'Full stack software developer specializing in Typescript development. Proficient in creating dynamic web applications using technologies such as Node.js, React, and Vue.js. Strong understanding of object-oriented programming principles and experience with Agile development methodologies. Demonstrated ability to lead teams and deliver high-quality, scalable software solutions on time.',
   skills: {
     'Back End and OOP': ['Node.js (Javascript/Typescript)', 'JAVA'],
     'Front End Technologies': [
